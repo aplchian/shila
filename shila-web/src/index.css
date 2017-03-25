@@ -3,3 +3,54 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+html {
+  background-color: #181818;
+  color: white;
+}
+
+.nav-bar {
+  -webkit-app-region: drag;
+}
+
+.logo {
+  text-decoration: none;
+}
+
+.page-header {
+  font-family: AvenirNext-Regular;
+  font-size: 18px;
+  letter-spacing: 0;
+  font-weight: 200;
+}
+
+
+.form-label {
+  font-family: AvenirNext-Regular;
+  font-size: 14px;
+  letter-spacing: 0;
+}
+
+.input {
+  border: 1px solid #000000;
+}
+
+.button {
+  width: 100%;
+  height: 46px;
+  /* Rectangle 2: */
+  background: #000000;
+  border: 1px solid #FFFFFF;
+  border-radius: 19px;
+  /* SUBMIT: */
+  font-family: AvenirNext-Bold;
+  font-size: 18px;
+  color: #FFFFFF;
+  letter-spacing: 1.2px;
+}
+
+.home-list {
+  border-bottom: 1px solid white;
+}
+
+

@@ -1,4 +1,5 @@
 
 module.exports = {
-  Nav: require('./Nav')
+  Nav: require('./Nav'),
+  Select: require('./Select')
 }

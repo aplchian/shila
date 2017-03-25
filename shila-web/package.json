@@ -4,10 +4,13 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "react-scripts": "0.9.5"
+    "react-scripts": "0.9.5",
+    "@kadira/storybook": "^2.21.0"
   },
   "dependencies": {
+    "@kadira/react-storybook-decorator-centered": "^1.1.2",
     "electron": "^1.6.2",
+    "moment": "^2.18.1",
     "pouchdb": "^6.1.2",
     "ramda": "^0.23.0",
     "react": "^15.4.2",
@@ -22,6 +25,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "electron": "electron ."
+    "electron": "electron .",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public"
   }
 }

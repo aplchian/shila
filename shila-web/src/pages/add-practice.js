@@ -11,8 +11,9 @@ module.exports = React.createClass({
   getInitialState(){
     return({
       _id: `practice_${uuid.v4()}`,
-      type: 'count',
+      format: 'count',
       name: '',
+      type: 'practice'
     })
   },
   handleChange(path){
@@ -45,7 +46,7 @@ module.exports = React.createClass({
           <div>
             <div className="db mt3">
               <label className="db form-label">Type</label>
-              <select className="mt1 pa1 w-100 black" onChange={this.handleChange('type')}>
+              <select className="mt1 pa1 w-100 black" onChange={this.handleChange('format')}>
                 <option value="count">Count</option>
                 <option value="duration">Duration</option>
               </select>

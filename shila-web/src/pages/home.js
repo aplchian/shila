@@ -3,6 +3,8 @@ import { map, pluck, keys, head } from 'ramda'
 import { Link } from 'react-router-dom'
 import { getAllSessions } from '../services'
 import { Select } from '../components'
+import CalendarHeatmap from 'react-calendar-heatmap';
+import moment from 'moment'
 
 
 module.exports = React.createClass({
@@ -22,6 +24,11 @@ module.exports = React.createClass({
       })
       .catch(err => console.log('err',err))
   },
+  handleDateClick(date){
+    return e => {
+      console.log('date',date)
+    }
+  },
   render(){
     const renderTimes = ({ name, count }) => {
       return (
@@ -37,11 +44,17 @@ module.exports = React.createClass({
     console.log('state',this.state)
 
     return (
-      <div>
+      <div className="mt2">
+        <CalendarHeatmap 
+          numDays={200}
+          onClick={this.handleDateClick(moment())}
+          tooltipDataAttrs={`what`}
+        />
         <Select
+          className="mt2"
           options={this.state.sortOptions}
           selected={this.state.currentOption}
-         />
+        />
         <ul className="pa0 ma0 w-100 list">
           {map(renderTimes,this.state.data)}
         </ul>

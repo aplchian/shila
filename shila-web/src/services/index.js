@@ -7,7 +7,8 @@ import { pluck, uniq, filter, assoc, prop, add, reduce } from 'ramda'
 module.exports = {
   createSession,
   createPractice,
-  getAllSessions
+  getAllSessions,
+  getAllPractices
 }
 
 function createSession(doc){
@@ -24,16 +25,23 @@ function getAllSessions(){
   }).then(({ rows }) => {
      const docs = pluck('doc',rows)
      const sessions = filter(({type}) => type === 'session',docs)
-     console.log('sessions',sessions)
      const obj = reduce((acc,val) => {
       const amount = acc[val.name] || 0
-      console.log('amount',amount)
       const obj = assoc(prop('name',val),add(amount,val.amount),acc)
-      
       return obj
      },{},sessions)
-     console.log('obbjj',obj)
+
      return obj
+  })
+}
+
+function getAllPractices(){
+  return db.allDocs({
+    include_docs: true,
+    startkey: 'practice',
+    endkey: 'practice\uffff'
+  }).then(({rows}) => {
+    return pluck('doc',rows)
   })
 }
 

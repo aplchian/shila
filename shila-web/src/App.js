@@ -10,6 +10,7 @@ import {
   Home,
   AddPractice,
   AddSession,
+  ShowDay
 } from './pages'
 import { Nav } from './components'
 
@@ -40,6 +41,7 @@ class App extends Component {
               <Route exact path="/" component={Home}/>
               <Route path="/practice/add" component={AddPractice}/>
               <Route path="/session/add/:type" component={AddSession}/> 
+              <Route path="/day/show/:date" component={ShowDay}/> 
             </div> 
           </div>       
         </BrowserRouter>

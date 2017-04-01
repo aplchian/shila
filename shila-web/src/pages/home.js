@@ -44,7 +44,7 @@ module.exports = React.createClass({
     console.log('state',this.state)
 
     return (
-      <div className="mt2">
+      <div className="mt4">
         <CalendarHeatmap 
           numDays={200}
           onClick={this.handleDateClick(moment())}
@@ -58,6 +58,7 @@ module.exports = React.createClass({
         <ul className="pa0 ma0 w-100 list">
           {map(renderTimes,this.state.data)}
         </ul>
+        <Link to="/session/add" ><button className="pointer fixed bottom-0 bn right-0 bg-white pa2 black font pointer">New Sesson</button></Link>
       </div>
     )
   }

@@ -8,10 +8,14 @@
  }
 
  .nav-bar {
-   background-color: black;
+   background-color: #181818;
    height: 56px;
    width: 100%;
    display: block;
+ }
+
+ .font {
+   font-family: AvenirNext-Bold;
  }
 
 

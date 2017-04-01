@@ -2,7 +2,7 @@ import React from 'react'
 import { Redirect } from 'react-router-dom'
 import moment from 'moment'
 import uuid from 'uuid'
-import { assoc, map } from 'ramda'
+import { assoc, map, dissoc } from 'ramda'
 import { createSession, getAllPractices } from '../services'
 
 
@@ -35,13 +35,14 @@ module.exports = React.createClass({
   },
   onSave(e){
     e.preventDefault()
-    
-    createSession(this.state)
+    const session = dissoc('practices',this.state)
+    createSession(session)
       .then(res => this.setState({success: true}))
       .catch(err => console.log('err',err))
   },
   render(){
     const renderOptions = ({name}) => <option value={name}>{name}</option>
+    console.log('state',this.state)
     return (
       <div>
         {

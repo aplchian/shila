@@ -24,6 +24,7 @@ function getAllSessions(){
     include_docs: true
   }).then(({ rows }) => {
      const docs = pluck('doc',rows)
+     console.log('rows')
      const sessions = filter(({type}) => type === 'session',docs)
      const obj = reduce((acc,val) => {
       const amount = acc[val.name] || 0

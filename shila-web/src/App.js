@@ -29,18 +29,10 @@ class App extends Component {
     return (
         <BrowserRouter>
           <div>
-          <nav className="nav-bar">
-              <Link style={{ textDecoration: 'none' }} to="/">
-                <h1 className="logo tc ttu no-underline"></h1>
-              </Link>
-              <Link to="/practice/add">
-                <div className="nav-add pointer z-max" style={addBtnStyle} ></div>
-              </Link>
-          </nav>
             <div className="w-80 center main">
               <Route exact path="/" component={Home}/>
-              <Route path="/practice/add" component={AddPractice}/>
-              <Route path="/session/add" component={AddSession}/> 
+              <Route path="/practice/add/" component={AddPractice}/>
+              <Route path="/session/add/:id" component={AddSession}/> 
               <Route path="/day/show/:date" component={ShowDay}/> 
             </div> 
           </div>       

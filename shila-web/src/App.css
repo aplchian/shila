@@ -107,6 +107,16 @@
   letter-spacing: 0;
 }
 
+.home-suggestion-text {
+  position: absolute;
+  right: 23px;
+  bottom: -6px;
+  font-family: AvenirNext-Regular;
+  font-size: 48px;
+  color: rgba(255,255,255,0.14);
+  letter-spacing: 0;
+}
+
 
 
 

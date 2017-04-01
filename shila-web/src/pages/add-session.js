@@ -42,7 +42,6 @@ module.exports = React.createClass({
   },
   render(){
     const renderOptions = ({name}) => <option value={name}>{name}</option>
-    console.log('state',this.state)
     return (
       <div>
         {

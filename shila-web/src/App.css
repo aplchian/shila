@@ -87,3 +87,30 @@
 .react-calendar-heatmap .color-gitlab-4 {
   fill: #254e77;
 }
+
+
+.home-cursor-container {
+  position: absolute;
+  width: 90%;
+  left: 50%;
+  bottom: 34px;
+  transform: translate(-50%, 0);
+  border: white;
+  height: 48px;
+  padding-bottom: 4px;
+}
+
+.home-cursor-text {
+  font-family: AvenirNext-Regular;
+  font-size: 48px;
+  color: #FFFFFF;
+  letter-spacing: 0;
+}
+
+
+
+
+
+
+
+

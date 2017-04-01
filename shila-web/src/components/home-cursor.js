@@ -1,7 +1,7 @@
 import React from 'react'
 import { append, init, length, find, filter, join,
          indexOf, head, toUpper, isEmpty, prop, type } from 'ramda'
-
+import { Redirect } from 'react-router-dom'
 
 const styles = {
   background: '#494949',
@@ -47,7 +47,10 @@ module.exports = React.createClass({
   },
   onSubmit(e){
     if(type(this.state.found === 'Object')){
-      console.log(`${this.state.found.name} Selected!`)
+      console.log('redirect!')
+      this.setState({
+        redirect: this.state.found._id
+      })
     }
   },
   onKeyPress(key){
@@ -67,23 +70,26 @@ module.exports = React.createClass({
         this.onKeyPress(key)
       }
     })
-
     document.addEventListener('keyup',({key}) => {
       this.onKeyUp(key)
     })
-
   },
   componentWillUnmount: function(){
     clearInterval(this.timer);
   },
   render(){
-    const { text } = this.props
+
     const suggestion = type(this.state.found) === 'Object'
                          ? prop('name',this.state.found) 
                          : null
 
     return(
       <div className="home-cursor-container">
+        {
+          this.state.redirect
+            ? <Redirect to={`/session/add/${this.state.found._id}`} />
+            : null
+        }
        <span className="home-cursor-text">{this.state.value}</span> 
         {
           this.state.show 

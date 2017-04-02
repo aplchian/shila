@@ -47,7 +47,6 @@ module.exports = React.createClass({
   },
   onSubmit(e){
     if(type(this.state.found === 'Object')){
-      console.log('redirect!')
       this.setState({
         redirect: this.state.found._id
       })

@@ -32,7 +32,7 @@ class App extends Component {
             <div className="w-80 center main">
               <Route exact path="/" component={Home}/>
               <Route path="/practice/add/" component={AddPractice}/>
-              <Route path="/session/add/:id" component={AddSession}/> 
+              <Route path="/session/add/:name" component={AddSession}/> 
               <Route path="/day/show/:date" component={ShowDay}/> 
             </div> 
           </div>       

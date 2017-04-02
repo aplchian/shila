@@ -8,7 +8,12 @@ module.exports = {
   createSession,
   createPractice,
   getAllSessions,
-  getAllPractices
+  getAllPractices,
+  getDoc
+}
+
+function getDoc(id){
+  return db.get(id)
 }
 
 function createSession(doc){

@@ -3,7 +3,8 @@ import { Redirect } from 'react-router-dom'
 import moment from 'moment'
 import uuid from 'uuid'
 import { assoc, map, dissoc } from 'ramda'
-import { createSession, getAllPractices } from '../services'
+import { createSession, getDoc } from '../services'
+import { CenterInput } from '../components'
 
 
 module.exports = React.createClass({
@@ -12,15 +13,14 @@ module.exports = React.createClass({
     const { match } = this.props
     return({
       _id: `session_${moment().unix()}_${uuid.v4()}`,
-      name: 'Tara',
+      practice: this.props.match.params.name,
       time: moment().unix(),
       type: 'session',
-      practices: []
     })
   },
   componentDidMount(){
-    getAllPractices(this.state)
-      .then(res => this.setState({practices: res}))
+    getDoc(this.props.match.params.name)
+      .then(res => this.setState({practice: res}))
       .catch(err => console.log('err',err))
   },
   handleChange(path){
@@ -40,8 +40,14 @@ module.exports = React.createClass({
       .then(res => this.setState({success: true}))
       .catch(err => console.log('err',err))
   },
+  saveCount(amount){
+    this.setState({amount})
+  },
   render(){
-    const renderOptions = ({name}) => <option value={name}>{name}</option>
+    console.log('state',this.state)
+    const format = this.state.practice.format === 'count'
+                    ? 'x'
+                    : 'min'
     return (
       <div>
         {
@@ -49,18 +55,18 @@ module.exports = React.createClass({
             ? <Redirect to="/"/>
             : null
         }
-        <h1 className="tc page-header">Add New <span className="ttc">{this.state.name}</span> Session</h1>
-        <form>
-          <div className="db mt3">
-            <label className="db form-label">Practice</label>
-            <select className="mt1 pa1 w-100 black mb2" onChange={this.handleChange('name')}>
-              {map(renderOptions,this.state.practices)}
-            </select>
-            </div>
-          <label className="db form-label">Count or Minutes</label>
-          <input onChange={this.handleChange('amount')} className="db w-100 input pa1" type="number"/>
-          <button onClick={this.onSave} className="button mt3 pointer">Submit</button>
-        </form>
+        <div className="session-name-header">
+          <h1>{this.state.practice.name}</h1>
+          {
+            this.state.amount 
+              ? <h2>{this.state.amount} {format}</h2>
+              : null
+          }
+        </div>
+        <CenterInput
+          format={this.state.practice.format}
+          onSave={this.saveCount}
+        />
       </div>
     )
   }
